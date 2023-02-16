@@ -13,7 +13,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: The University of Sydney, Research Technology
+title: Research Technology @The University of Sydney
 email: dean.taylor@sydney.edu.au
 description: >- # this means to ignore newlines until "baseurl:"
   Research Technology at the University of Sydney

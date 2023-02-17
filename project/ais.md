@@ -8,4 +8,4 @@ title: AIS
 ## References
 
 * [Home](https://australian-imaging-service.github.io)
-* [ARDC ref.](https://ardc.edu.au/project/australian-imaging-service-ais/)
+* [ARDC|NCRIS](https://ardc.edu.au/project/australian-imaging-service-ais/)

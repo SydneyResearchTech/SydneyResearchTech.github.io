@@ -8,4 +8,4 @@ title: ACCS
 ## References
 
 * [Home](https://imagingtools.au)
-* [ARDC ref.](https://ardc.edu.au/project/australian-characterisation-commons-at-scale-accs/)
+* [ARDC|NCRIS](https://ardc.edu.au/project/australian-characterisation-commons-at-scale-accs/)

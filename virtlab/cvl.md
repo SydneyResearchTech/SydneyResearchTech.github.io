@@ -68,3 +68,23 @@ cat <<'EOT' |sudo tee /etc/profile.d/Z99-cvl.sh
 export PATH="/vol/cvl/bin:${PATH}"
 EOT
 ```
+
+### Software build CI/CD
+
+Currently within a Forked version of the upstream project [CharacterisationVL-Software](https://github.com/SydneyResearchTech/CharacterisationVL-Software/tree/usyd), there is the addition of:
+* /Makefile
+  * `make` run within the root directory will build all Apptainer definition files within the `/defs` folder.
+  * `make xdg` run within the root directory will create XDG desktop menus for all binary files within the `/vol/cvl/bin` (default) directory.
+* /defs
+  * Updated Apptainer definition files for software builds.
+* /bin
+  * Helper and operational scripts.
+
+*NB:* see the [defs/README.md](https://github.com/SydneyResearchTech/CharacterisationVL-Software/blob/usyd/defs/README.md) for details of how to alter setting defaults to match your environment if not using the USyd CVL desktop image for the build process.
+
+```bash
+git clone --branch usyd https://github.com/SydneyResearchTech/CharacterisationVL-Software.git
+cd CharacterisationVL-Software
+make
+make xdg
+```

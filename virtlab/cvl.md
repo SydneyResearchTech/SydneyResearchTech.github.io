@@ -48,8 +48,8 @@ output=json
 EOT
 cat <<EOT |sudo tee -a /root/.aws/credentials
 [cvlapps]
-aws_access_key_id=AKIAVRTW36HHLGE6OMC6
-aws_secret_access_key=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
+aws_access_key_id=XXXXXXXXXXXXXXXXXXXX
+aws_secret_access_key=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 role_arn=arn:aws:iam::381427642830:role/cvl-desktop-s3-readOnly-924D5598-47E1-40CD-A925-92E712EE0141
 source_profile=cvlapps
 EOT
@@ -64,7 +64,7 @@ sudo systemctl daemon-reload
 sudo systemctl restart remote-fs.target
 
 # Add software to the system PATH
-cat <<EOT |sudo tee /etc/profile.d/Z99-cvl.sh
+cat <<'EOT' |sudo tee /etc/profile.d/Z99-cvl.sh
 export PATH="/vol/cvl/bin:${PATH}"
 EOT
 ```

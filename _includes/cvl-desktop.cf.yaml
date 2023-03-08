@@ -1,0 +1,131 @@
+---
+# AMI_ID=$(aws ec2 describe-images --owners 381427642830 --filters 'Name=name,Values=ubuntu-jammy-22.04-amd64-server-cvl-desktop-*' --query 'reverse(sort_by(Images,&CreationDate))[0].{id:ImageId}' --output text)
+# aws cloudformation create-stack --disable-rollback --stack-name cvl-desktop --template-body file://./cvl-desktop.cf.yaml --parameters '[{"ParameterKey": "ImageId", "ParameterValue": "'$AMI_ID'"}]'
+# aws cloudformation update-stack --stack-name cvl-desktop --template-body file://./cvl-desktop.cf.yaml --parameters '[{"ParameterKey": "ImageId", "ParameterValue": "'$AMI_ID'"}]'
+# aws cloudformation describe-stack-events --stack-name cvl-desktop
+# aws cloudformation describe-stacks --stack-name cvl-desktop
+# aws cloudformation delete-stack --stack-name cvl-desktop
+# https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-general.html#scenario-userdata-base64
+# https://cloudinit.readthedocs.io/en/latest/topics/modules.html
+#
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "CVL-desktop instance"
+Parameters:
+  ImageId:
+    Description: "AMI image id"
+    Type: String
+    Default: ami-04deb378897bba790
+    #Type: 'AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>'
+    #Default: '/restek/service/ami-linux-latest/ubuntu-jammy-22.04-amd64-server-cvl-desktop'
+    #Default: /aws/service/canonical/ubuntu/server/22.04/stable/current/amd64/hvm/ebs-gp2/ami-id
+  InstanceType:
+    Description: "EC2 instance type"
+    Type: String
+    Default: g4dn.xlarge
+    AllowedValues: ["g4dn.xlarge"]
+    ConstraintDescription: "must be a valid EC2 instance type."
+  KeyName:
+    Description: "Name of an existing EC2 KeyPair to enable SSH access to the instance"
+    Type: "AWS::EC2::KeyPair::KeyName"
+    Default: dean.taylor@sydney.edu.au
+    ConstraintDescription: "must be the name of an existing EC2 KeyPair."
+  PublicResourceAccountID:
+    Description: "Account ID of Virtual Laboratory public resources"
+    Type: String
+    Default: "381427642830"
+  SubnetId:
+    Type: String
+    Description: Subnet ID
+  VpcId:
+    Type: String
+    Description: Virtual Private Cloud ID
+
+Conditions:
+  IsPublicAccount: !Equals
+    - !Ref AWS::AccountId
+    - !Ref PublicResourceAccountID
+
+Resources:
+  EC2Instance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      BlockDeviceMappings:
+        - DeviceName: /dev/sda1
+          Ebs:
+            VolumeSize: 100
+      InstanceType: { "Ref" : "InstanceType" }
+      SecurityGroupIds:
+        - !GetAtt InstanceSecurityGroup.GroupId
+      KeyName: { "Ref" : "KeyName" }
+      IamInstanceProfile: !If
+        - IsPublicAccount
+        - !Ref InstanceProfilePublic
+        - !Ref AWS::NoValue
+      ImageId: !Ref ImageId
+      SubnetId: !Ref SubnetId
+      Tags:
+        - { Key: sydney.edu.au/ResTek/ansibleGroups, Value: "cvl,desktop,usyd" }
+        - { Key: sydney.edu.au/ResTek/owner, Value: "dean.taylor@sydney.edu.au" }
+        - { Key: sydney.edu.au/ResTek/environment, Value: "development" }
+      UserData:
+        Fn::Base64: !Sub
+          - |
+            #cloud-config
+            bootcmd:
+              - echo 'APT::Periodic::Update-Package-Lists "0";' >/etc/apt/apt.conf.d/99auto-upgrades
+              - echo 'APT::Periodic::Download-Upgradeable-Packages "0";' >>/etc/apt/apt.conf.d/99auto-upgrades
+              - echo 'APT::Periodic::AutocleanInterval "0";' >>/etc/apt/apt.conf.d/99auto-upgrades
+              - echo 'APT::Periodic::Unattended-Upgrade "0";' >>/etc/apt/apt.conf.d/99auto-upgrades
+            keyboard:
+              layout: us
+            locale: en_AU.UTF-8
+            device_aliases:
+              ephemeral0: /dev/nvme1n1
+            mounts:
+              - ["ephemeral0","/scratch","xfs","defaults,X-mount.mkdir,x-systemd.makefs,nofail","0","2"]
+            packages:
+              - python3
+              - python3-pip
+            package_update: true
+            ssh_authorized_keys:
+              - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCb3FJJiEgJRADLs8D7jsdZorcMX4+VUBZzXGDg+I5WdICDaX3uz8/hDQxoasI2bTwjcFFOhjNA4cWe57ZhiZbtAiVKvbQ6d35geSt9JqOoGliNVm4nYDBpfsQpgwJ67Qx6xwPsD0q0oZyJWfLwCJgjwHw0ZXQI0PxkLkW9itA46aLj3YKtYVv7OpzbwCXYD5tOV0ZKuhssFpwlrghCuLw9G7UcIMufZm6ZtJ+YQ0HuRpeWIPIq6uf0gQTDH19ARqEWtF/Xz3BJvDq6xC7eoiwQbbhOiuGMmPpGb6jltHdfdDPJOg2Q4I1NnqS9c2ay+0fO5Qm+MpmNRLjZehV1ofUhvcl8O7jpFKqdJXTurgaeBxsGug1NlBUYxMweU4S8WwHVhhJ3q+oMHV45QirEY7MQkA38nS8bB87FNydmTnocG14Kj+GPxD7E4L5rDWEvz/LuxE4mPrxYe2JIU1nqsv0wTvmTIWHU5xxxSLUh43ooTraQIciJGeHFyiqlRc9tfxs= dean.taylor@AC02GF0TSQ05N.sydney.edu.au
+            ssh_pwauth: false
+            timezone: Australia/Sydney
+            write_files:
+              - path: /etc/systemd/system/scratch.mount.d/override.conf
+                content: |
+                  [Unit]
+                  Wants=mount-scratch-chmod.service
+              - path: /etc/systemd/system/mount-scratch-chmod.service
+                content: |
+                  [Unit]
+                  Description=mount chmod
+                  RequiresMountsFor=/scratch
+                  [Service]
+                  Type=oneshot
+                  ExecStart=/usr/bin/chmod 01777 /scratch
+
+  InstanceSecurityGroup:
+    Type: "AWS::EC2::SecurityGroup"
+    Properties:
+      GroupDescription: "Enable SSH access via port 22"
+      SecurityGroupIngress:
+        - IpProtocol: "tcp"
+          FromPort: "22"
+          ToPort: "22"
+          CidrIp: "0.0.0.0/0"
+      VpcId: !Ref VpcId
+
+Outputs:
+  AZ:
+    Description: "Availability Zone of the newly created EC2 instance"
+    Value: { "Fn::GetAtt" : [ "EC2Instance", "AvailabilityZone" ] }
+  InstanceId:
+    Description: "InstanceId of the newly created EC2 instance"
+    Value: { "Ref" : "EC2Instance" }
+  PublicDNS:
+    Description: "Public DNSName of the newly created EC2 instance"
+    Value: { "Fn::GetAtt" : [ "EC2Instance", "PublicDnsName" ] }
+  PublicIP:
+    Description: "Public IP address of the newly created EC2 instance"
+    Value: { "Fn::GetAtt" : [ "EC2Instance", "PublicIp" ] }

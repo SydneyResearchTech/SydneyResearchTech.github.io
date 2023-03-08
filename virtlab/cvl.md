@@ -28,6 +28,31 @@ aws ec2 describe-images --owners 381427642830 \
  --output text
 ```
 
+Using the AMI within your own AWS account.
+
+```bash
+# get AMI ID of the latest CVL image
+AMI_ID=$( \
+  aws ec2 describe-images --owners 381427642830 \
+    --filters 'Name=name,Values=ubuntu-jammy-22.04-amd64-server-cvl-desktop-*' \
+    --query 'reverse(sort_by(Images,&CreationDate))[0].{id:ImageId}' \
+    --output text)
+
+# without AWS default VPC. Get an available VPC Id and Subnet Id with the largest free IP range available.
+aws ec2 describe-subnets \
+  --filters 'Name=map-public-ip-on-launch,Values=true' \
+  --query 'reverse(sort_by(Subnets,&AvailableIpAddressCount))[0].{SubnetId: SubnetId, VpcId: VpcId}'
+
+# Start CVL Desktop stack
+aws cloudformation create-stack --stack-name cvl-desktop --template-body file://cvl-desktop.cf.yaml \
+  --parameters "ParameterKey=ImageId,ParameterValue=${AMI_ID}"
+```
+
+cvl-desktop.cf.yaml
+```yaml
+{% include cvl-desktop.cf.yaml %}
+```
+
 ### Software library for research applications
 
 The research applications are containerised utilising [Apptainer](https://apptainer.org) and are presented as Singularity Image File (SIF). The software library can be presented to any Linux workstation via an [S3 File System in User Space (FUSE)](https://github.com/s3fs-fuse/s3fs-fuse) mount.

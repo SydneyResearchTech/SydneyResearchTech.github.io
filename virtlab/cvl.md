@@ -30,6 +30,9 @@ aws ec2 describe-images --owners 381427642830 \
 
 Using the AMI within your own AWS account.
 
+Prerequisite:
+* [AWS Command Line Interface (CLI)](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
 ```bash
 # get AMI ID of the latest CVL image
 AMI_ID=$( \
@@ -46,12 +49,25 @@ aws ec2 describe-subnets \
 # Start CVL Desktop stack
 aws cloudformation create-stack --stack-name cvl-desktop --template-body file://cvl-desktop.cf.yaml \
   --parameters "ParameterKey=ImageId,ParameterValue=${AMI_ID}"
+
+# Verify Stack creation process is operating as expected
+aws cloudformation describe-stack-events --stack-name cvl-desktop
+
+# Display final stack details once created
+aws cloudformation describe-stacks --stack-name cvl-desktop
 ```
 
-cvl-desktop.cf.yaml
+AWS CloudFormation template (cvl-desktop.cf.yaml), modify the template to suit your own environment and requirements.
+
 ```yaml
 {% include cvl-desktop.cf.yaml %}
 ```
+
+CloudFormation template references:
+* [AWS CloudFormation User Guide](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/)
+* [Cloud-init](https://cloudinit.readthedocs.io/en/latest/#)
+  * `UserData` section
+  * Used to perform bootstrap operations on the image to ensure essential services and packages are available early in the instances startup process.
 
 ### Software library for research applications
 
@@ -88,11 +104,21 @@ EOT
 sudo systemctl daemon-reload
 sudo systemctl restart remote-fs.target
 
-# Add software to the system PATH
+# Optional. Add software to the system PATH
 cat <<'EOT' |sudo tee /etc/profile.d/Z99-cvl.sh
 export PATH="/vol/cvl/bin:${PATH}"
 EOT
+
+# Optional. Add XDG configuration to the hosts settings to display CVL software within the standard Application menu.
+cat <<EOT |sudo tee -a /etc/environment
+XDG_CONFIG_DIRS="/vol/cvl/config:/etc/xdg"
+EOT
 ```
+
+S3FS provides a number of functions in the delivery of the software stack.
+* Authentication to the S3 bucket. This can be provided via a direct client configuration containing authentication details or via credentials assigned to the host via an `Instance Profile` (preferred).
+* POSIX compliant storage representation.
+* Local cache of content to ensure active resources are performant. The USyd CVL instance utilises a solid state drive mounted as `/scratch' to provide performant Iops once the S3 object (SIF image) has been cached locally. This imposes a single delay in the initial download on user demand and then ongoing access to a locally cached resource.
 
 ### Software build CI/CD
 

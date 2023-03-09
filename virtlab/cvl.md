@@ -116,7 +116,7 @@ EOT
 ```
 
 S3FS provides a number of functions in the delivery of the software stack.
-* Authentication to the S3 bucket. This can be provided via a direct client configuration containing authentication details or via credentials assigned to the host via an `Instance Profile` (preferred).
+* Authentication to the S3 bucket. This can be provided via a direct client configuration containing authentication details or via credentials assigned to the host via the preferred method of using an [Amazon EC2 Instance Profile](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html).
 * POSIX compliant storage representation.
 * Local cache of content to ensure active resources are performant. The USyd CVL instance utilises a solid state drive mounted as `/scratch' to provide performant Iops once the S3 object (SIF image) has been cached locally. This imposes a single delay in the initial download on user demand and then ongoing access to a locally cached resource.
 

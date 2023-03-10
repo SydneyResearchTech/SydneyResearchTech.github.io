@@ -21,3 +21,5 @@ The University of Sydney, Research Technology group utilises GitOps practices to
 * Enhances collaboration and visibility
 
 GitOps is an infrastructure operational framework that utilises the advantages of version control, collaboration, compliance, and continuous integration/continuous delivery (CI/CD).
+
+Kubernetes (K8s) is a system for automating deployment, scaling, and management of containerised applications. It is a common industry tool for the creation and management of a hybrid cloud infrastructure. Kubernetes is natively supported in many public cloud services, such as Amazon (EKS), Azure (AKS), Google (GKE), etc., as well as implementation in private cloud (e.g., kubeadm, OpenShift, Rancher, juju) and edge compute (microk8s).

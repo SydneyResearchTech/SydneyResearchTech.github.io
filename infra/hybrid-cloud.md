@@ -14,7 +14,7 @@ Research Technology group has taken the initiative to prioritise a Hybrid Cloud 
 
 Hybrid Cloud is a mixture of computing, storage, and service environments made up of public cloud, private cloud, on-premises infrastructure and edge compute. While this provides obvious advantages, especially to research oriented infrastructure, there needs to be consideration into how best to manage this level of complexity.
 
-The University of Sydney, Research Technology group utilises GitOps practices to effectively manage multiple Kubernetes cluster deployments. This technique provides a number of advantages including but not limited to:
+The University of Sydney, Research Technology group utilises GitOps practices to effectively manage multiple Kubernetes cluster deployments. The flexible structure allows oversight and administration of cloud, infrastructure and application life cycle. This technique provides a number of advantages including but not limited to:
 * Greatly reduces the total cost of ownership
 * Segregates out subject mater experts and business practices to better manage workflows and compliance
 * Provides reproducible outcomes

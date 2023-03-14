@@ -5,6 +5,15 @@ title: CVL
 
 ## [Characterisation Virtual Laboratory]({% link project/accs.md %})
 
+The official upstream CVL Work Package 1 (WP1) presents an array of services providing access to virtual desktop resources for research groups within characterisation space. The University of Sydney Research Technology team has adapted a number of these services to suit institutional resourcing and integration into existing services.
+
+The primary difference is the focus on service oriented cloud based artifacts. At this time the University is focusing on public cloud and as you will see the outputs are targeted at producing Amazon related resources. Some of the outcomes associated with this design principal are:
+* Implementation of continuous development / continuous delivery (CI/CD) to reduce time and resources taken to provide services all while working towards a ever higher quality user experience.
+* Multiple levels of services produced to allow the maximum flexibility and high reuse of existing resources. This can help to provide research outcomes fit for purpose and in alignment with project goals.
+* Reduced cost under many workload types using the most optimal payment to fit work practices. E.g., At this time it costs around $0.70 p/h to run a medium spec GPU virtual desktop with 3D graphics acceleration suited to visualisation of research data.
+* Access of resources from any location. At this time the research cloud (Ronin) can be accessed from any location via the university VPN.
+* Common research platform. This has many advantages including helping with collaboration, reliable software stacks, consistent support, predictable user experience, etc. 
+
 ## CVL @The University of Sydney
 
 ### Access
@@ -122,7 +131,7 @@ S3FS provides a number of functions in the delivery of the software stack.
 
 ### Software build CI/CD
 
-*NB:* It is recommended to use the USyd CVL desktop image to initiate the CICD software build process.
+*NB:* It is recommended to use the USyd CVL desktop image to initiate the CI/CD software build process as it contains all the pre-requisite software and the S3FS mount (read/write) of the software library.
 
 ```bash
 # Clone repository code

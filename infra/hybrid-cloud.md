@@ -3,6 +3,8 @@ layout: page
 title: Hybrid Cloud
 redirect_from:
   - /infra/gitops
+authors:
+  - Dean Taylor <dean.taylor@sydney.edu.au>
 ---
 
 ## Summary

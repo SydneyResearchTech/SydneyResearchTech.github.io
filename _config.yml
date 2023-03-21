@@ -40,3 +40,14 @@ plugins:
 #   - vendor/ruby/
 
 timezone: Australia/Sydney
+
+collections:
+  training:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "training"
+    values:
+      layout: "page"

@@ -1,0 +1,11 @@
+---
+layout: page
+title: Training
+permalink: training/
+---
+
+<ul>
+{%- for page in site.training -%}
+<li><a href="{{ page.url }}">{{ page.title }}</a></li>
+{%- endfor -%}
+</ul>

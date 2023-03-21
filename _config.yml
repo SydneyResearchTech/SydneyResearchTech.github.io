@@ -18,7 +18,7 @@ email: dean.taylor@sydney.edu.au
 description: >- # this means to ignore newlines until "baseurl:"
   Research Technology at the University of Sydney
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://sydneyresearchtech.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://sydneyresearchtech.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 markdown: kramdown

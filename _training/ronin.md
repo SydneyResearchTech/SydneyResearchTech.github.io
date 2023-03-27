@@ -1,9 +1,30 @@
 ---
 ---
 
-# Linux and Mac M1 (ARM64) client issues
+# Login
+
+* Initiate AnyConnect VPN client service to The University of Sydney network
+  * If you are a Mac M1 (ARM64) or Linux user please see the [notes bellow](#mac-m1-arm64-and-linux-client-issues).
+* Navigate to the [Ronin login page](https://ronin.sydneyuni.cloud/login.php)
+* Click on `LET'S GO!`
+
+![https://ronin.sydneyuni.cloud/login.php](/assets/img/Ronin login USyd.png){:class="img-responsive"}
+
+* Enter your credentials and login
+
+![Ronin projects page](/assets/img/Ronin projects.png){:class="img-responsive"}
+
+# Mac M1 ARM64 and Linux client issues
 
 ## AnyConnect VPN
+
+*ISSUE:* The University of Sydney AnyConnect VPN service uses dynamic routing for the Ronin service which under
+normal operation provides your machine with network routing instructions to connect to the Ronin user interface (UI) and any VM's
+that are created via Ronin. Unfortunately the AnyConnect client for Mac M1 and Linux do not honour this instruction.
+
+*WORKAROUND:* The script bellow will provide routing instructions for both the Ronin UI and any VM's you specify by the
+name provided. Please make any modifications you require or you can utilise this script to enter the route information
+by hand.
 
 ```bash
 #!/usr/bin/env bash
@@ -45,3 +66,4 @@ if [[ ! -z $FQDN ]]; then
                 ubuntu@${FQDN}
 fi      
 ```
+

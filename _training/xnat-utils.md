@@ -1,7 +1,7 @@
 ---
 ---
 
-## Opening the Jupyter notebook tutorial
+## Launching Jupyter notebook
 
 Open a terminal on your CVL instance (either from the desktop or directly
 from RONIN link) and type the following line to launch a test XNAT instance
@@ -53,3 +53,8 @@ be accessed from your browser at `http://localhost:8888`.
 
 ![Ronin link to custom application](/assets/img/Ronin link to custom application.png){:class="img-responsive"}
 
+
+## Opening the Xnat-Utils tutorial
+
+To open the Xnat-Utils tutorial, navigate to the `git/training-resources/notebooks` directory
+and open the notebook file called `Xnat-Utils Basics.ipynb`

@@ -83,7 +83,7 @@ port number under `LINK TO A CUSTOM APPLICATION` and press `LINK`.
 This should map `8888` on the CVL desktop to `8888` on your local machine, so it can
 be accessed from your browser at `http://localhost:8888`.
 
-![Ronin link to custom application](/assets/img/Ronin link to custom application.png){:class="img-responsive"}
+![Ronin jupyter link](/assets/img/Ronin jupyter link.png){:class="img-responsive"}
 
 The JupyterHub homepage will open up and ask for a token or user name. Copy the token
 string from the output in your terminal, or alternatively copy the whole

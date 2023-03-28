@@ -35,8 +35,8 @@ you will be prompted to enter your credentials again.
 
 ## Launching Jupyter notebook
 
-Open a terminal on your CVL instance (either from the desktop or directly
-from RONIN link) and type the following line to launch a test XNAT instance
+Open a terminal on your CVL instance using a direct terminal connection from
+RONIN link and type the following line to launch a test XNAT instance
 on your CVL machine.
 
 ```bash
@@ -84,6 +84,10 @@ This should map `8888` on the CVL desktop to `8888` on your local machine, so it
 be accessed from your browser at `http://localhost:8888`.
 
 ![Ronin link to custom application](/assets/img/Ronin link to custom application.png){:class="img-responsive"}
+
+The JupyterHub homepage will open up and ask for a token or user name. Copy the token
+string from the output in your terminal, or alternatively copy the whole
+`http://localhost:8888/?token=...` string into your browser address bar.
 
 
 ## Opening the Xnat-Utils tutorial

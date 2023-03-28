@@ -53,12 +53,21 @@ Enter your credentials into the XNAT prompt
 
 ![XNAT login screen](/assets/img/XNAT login screen.png){:class="img-responsive"}
 
+When using an AIS XNAT, make sure you either select the correct authentication method from the 
+drop down box (i.e. unikey for University of Sydney staff/students), or click on the
+orange AAF button to login using credentials from another institution.
+
+For the text XNAT instance the username and password are both "admin".
+
 ### Navigating to session page
 
 To navigate to an imaging session page, either select the projects on the left-hand
 side or the recent sessions on the right.
 
 ![XNAT session page](/assets/img/XNAT session page.png){:class="img-responsive"}
+
+Alternatively, you can search using the quick search bar, or create an advanced search
+to select a range of sessions.
 
 ### Downloading data
 

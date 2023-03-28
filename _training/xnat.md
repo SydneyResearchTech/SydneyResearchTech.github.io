@@ -1,7 +1,7 @@
 ---
 ---
 
-# Launching your own test XNAT instance
+## Launching your own test XNAT instance
 
 In order to test out all the features of XNAT-utils and the container service in a
 safe way, we will first run our very own copy of XNAT on the CVL (i.e. instead of
@@ -31,7 +31,7 @@ ubuntu@ip-10-0-5-248:~ $ xnat4tests start --with-data dummydicom
 The launched XNAT instance will be available on the 8080 port of the CVL host, i.e.
 http://localhost:8080 from the firefox browser on the CVL desktop.
 
-## Accessing the test XNAT instance directly via RONIN link
+### Accessing the test XNAT instance directly via RONIN link
 
 RONIN link provides a neat feature to connect directly to the port on your CVL instance,
 so you can use the native browser of your machine to access your test XNAT instance.
@@ -44,27 +44,28 @@ be accessed from your browser at `http://localhost:8080`.
 
 ![Ronin link to custom application](/assets/img/Ronin link to custom application.png){:class="img-responsive"}
 
-# Using XNAT
 
-## Logging into XNAT (AIS)
+## Using XNAT
+
+### Logging into XNAT (AIS)
 
 Enter your credentials into the XNAT prompt
 
 ![XNAT login screen](/assets/img/XNAT login screen.png){:class="img-responsive"}
 
-## Navigating to session page
+### Navigating to session page
 
 To navigate to an imaging session page, either select the projects on the left-hand
 side or the recent sessions on the right.
 
 ![XNAT session page](/assets/img/XNAT session page.png){:class="img-responsive"}
 
-## Downloading data
+### Downloading data
 
 There are two ways to download data from an XNAT session page via the "download diaglogue"
 or the "file manager"
 
-### File manager
+#### File manager
 
 The simplest way to view the files that are stored within a session is via the "file manager",
 which is accessed via the "manage files" action item.
@@ -75,7 +76,7 @@ Here you can download individual files by clicking on the links, or multiple fil
 selecting the scans you want and clicking `download`. It is also possible to upload
 individual files to parts of the file tree, although this isn't used much in practice.
 
-### Download dialogue
+#### Download dialogue
 
 Select `Download > Download Images` from the action item to bring up the download dialogue.
 Here you can select the resources you would like to download across multiple scans,

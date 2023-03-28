@@ -92,5 +92,5 @@ string from the output in your terminal, or alternatively copy the whole
 
 ## Opening the Xnat-Utils tutorial
 
-To open the Xnat-Utils tutorial, navigate to the `git/training-resources/notebooks` directory
+To open the Xnat-Utils tutorial, navigate to the `git/cvl-training/notebooks` directory
 and open the notebook file called `Xnat-Utils Basics.ipynb`

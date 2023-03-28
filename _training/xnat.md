@@ -71,13 +71,15 @@ to select a range of sessions.
 
 ### Downloading data
 
-There are two ways to download data from an XNAT session page via the "download diaglogue"
-or the "file manager"
+There are three ways to download data from an XNAT session page, via the "bulk action", the "download diaglogue" or the "file manager"
+
+### Bulk action
+
+Simply check the checkbox next to the scans you want to download and click the `Download` button above the list of scans.
 
 #### File manager
 
-The simplest way to view the files that are stored within a session is via the "file manager",
-which is accessed via the "manage files" action item.
+The file manager lets you view all the files that are stored within a session, and is accessed via the "manage files" action item. Under each scan you can see that there can be multiple resources (e.g. DICOM, NIFTI, SNAPSHOTS). Here you can select exactly which ones that you want to download.
 
 ![XNAT download dialogue](/assets/img/XNAT download dialogue.png){:class="img-responsive"}
 

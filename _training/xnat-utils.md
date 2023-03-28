@@ -1,6 +1,38 @@
 ---
 ---
 
+## Logging in and saving credentials
+
+Before we start the tutorial notebook we need to login and save our credentials. You
+are prompted to do this the first time you use any of the utilities, but the interactive
+prompt doesn't work inside a notebook, so we need to run it first outside.
+
+Open up a terminal, either within your desktop environment (`Applications/System Tools/MATE Terminal`)
+or directly from your computer using RONIN link and run the command `xnat-ls` and
+it will ask you for the server address you want to connect and your login credentials.
+We will use the host address `http://localhost:8080` but typically you will enter your
+institutional AIS address here (e.g. https://xnat.sydney.edu.au)
+
+```
+ubuntu@ip-10-0-5-248:~ $ xnat-ls
+XNAT server hostname (e.g. mbi-xnat.erc.monash.edu.au): http://localhost:8080
+XNAT username for 'http://localhost:8080': admin
+Password:
+```
+
+This will login to your XNAT instance, create a user token and save it in your home
+directory in the `~/.netrc` file, which will look something like this.
+
+```
+machine localhost:8080
+user 039af9e4-9dbd-4e5a-9bdd-d54a25077fa2
+password lTG1UcRsQDCffoSjc7slfnYDTBAiIhV5LQmaKxIrKxFqTYk33ZHB4gKNjSmsdvdl
+```
+
+This token will be valid 2 days and provides full access to your XNAT account, so make sure
+to keep it secure when using your institutional account. After the 2 days has lapsed
+you will be prompted to enter your credentials again.
+
 ## Launching Jupyter notebook
 
 Open a terminal on your CVL instance (either from the desktop or directly

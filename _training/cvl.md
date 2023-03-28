@@ -10,9 +10,9 @@ title: Characterisation Virtual Laboratory (CVL)
 # Have a University of Sydney login
 
 Requirements:
-* [Ronin Link client](https://blog.ronin.cloud/ronin-link/) installed 
+* [Ronin Link client](https://blog.ronin.cloud/ronin-link/){:target="_blank"} installed 
 
-To login to Ronin follow the [Ronin instructions]({% link _training/ronin.md %})
+To login to Ronin follow the [Ronin instructions]({% link _training/ronin.md %}){:target="_blank"}
 
 Once logged in select the `VIRTLABTRAIN` (VIRTUAL LAB TRAINING) project
 
@@ -73,7 +73,7 @@ From left to right
 Once back on the `Project machines` screen, you should be looking at your newly created machine.
 
 If you are a Mac M1 or Linux user you will need to create a network route via the AnyConnect VPN to access your machine.
-Please review [Mac M1 ARM64 and Linux client issues]({% link _training/ronin.md %}#mac-m1-arm64-and-linux-client-issues).
+Please review [Mac M1 ARM64 and Linux client issues]({% link _training/ronin.md %}#mac-m1-arm64-and-linux-client-issues){:target="_blank"}.
 If you have added the script to your PATH you can run the following command `ronin-client-setup <YOUR-MACHINE-NAME-HERE>`.
 
 Click on the `Open with Ronin link`, if everything goes as expected you should see the Ronin Link application with a reference to your new machine.
@@ -84,7 +84,7 @@ Select `Connect to machine` and then select `Desktop`.
 
 You will receive a message to `Install DCV`. Select `Install it!`. Please be patient as the software is installed.
 
-*NB:* While you are waiting you can review the details of the AWS [NICE DCV software](https://aws.amazon.com/hpc/dcv/).
+*NB:* While you are waiting you can review the details of the AWS [NICE DCV software](https://aws.amazon.com/hpc/dcv/){:target="_blank"}.
 
 # Without a University of Sydney login
 

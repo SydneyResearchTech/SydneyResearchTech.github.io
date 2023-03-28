@@ -1,11 +1,8 @@
 ---
-layout: page
-title: CVL
+title: Characterisation Virtual Laboratory (CVL)
 ---
 
-## [Characterisation Virtual Laboratory]({% link project/accs.md %})
-
-The official upstream CVL Work Package 1 (WP1) presents an array of services providing access to virtual desktop resources for research groups within characterisation space. The University of Sydney Research Technology team has adapted a number of these services to suit institutional resourcing and integration into existing services.
+The official upstream [ACCS Work Package 1 (WP1)]({% link _project/accs.md %}){:target="_blank"} presents an array of services providing access to virtual desktop resources for research groups within characterisation space. The University of Sydney Research Technology team has adapted a number of these services to suit institutional resourcing and integration into existing services.
 
 The primary difference is the focus on service oriented cloud based artifacts. At this time the University is focusing on public cloud and as you will see the outputs are targeted at producing Amazon related resources. Some of the outcomes associated with this design principal are:
 * Implementation of continuous development / continuous delivery (CI/CD) to reduce time and resources taken to provide services all while working towards a ever higher quality user experience.

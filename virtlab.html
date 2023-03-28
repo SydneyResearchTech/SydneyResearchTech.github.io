@@ -1,0 +1,11 @@
+---
+layout: page
+title: Virtual Labs
+permalink: virtlab/
+---
+
+<ul>
+{%- for page in site.virtlab -%}
+<li><a href="{{ page.url }}">{{ page.title }}</a></li>
+{%- endfor -%}
+</ul>

@@ -42,12 +42,22 @@ plugins:
 timezone: Australia/Sydney
 
 collections:
+  project: {output: true}
   training:
+    output: true
+  virtlab:
     output: true
 
 defaults:
+  - scope: {path: "", type: "project"}
+    values: {layout: "page"}
   - scope:
       path: ""
       type: "training"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+      type: "virtlab"
     values:
       layout: "page"

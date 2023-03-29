@@ -98,3 +98,19 @@ Your instructor will provide you with:
 
 You will be able to follow along with the desktop and practical sections on the VM provided once the short intro
 to Ronin is complete.
+
+Once you have the External DNS and user credentials of your allocated virtual machine (VM).
+
+```bash
+# Connect to the VM via SSH and tunnel specific ports
+# Port 3389 is the Windows Remote Desktop (RDP) port
+# Replace the FQDN with the one provided
+ssh \
+  -Llocalhost:3389:localhost:3389 \
+  -Llocalhost:8080:localhost:8080 \
+  -Llocalhost:8888:localhost:8888 \
+  ubuntu@ec2-13-238-182-54.ap-southeast-2.compute.amazonaws.com
+```
+
+![RDP connection](/assets/img/RDP connect 2 CVL desktop.png){:class="img-responsive"}
+

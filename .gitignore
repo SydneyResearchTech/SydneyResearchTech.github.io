@@ -5,3 +5,4 @@
 /.bundle/
 /vendor/
 .DS_Store
+.*.swp

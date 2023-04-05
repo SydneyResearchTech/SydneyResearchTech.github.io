@@ -79,31 +79,11 @@ Resources:
             keyboard:
               layout: us
             locale: en_AU.UTF-8
-            device_aliases:
-              ephemeral0: /dev/nvme1n1
-            mounts:
-              - ["ephemeral0","/scratch","xfs","defaults,X-mount.mkdir,x-systemd.makefs,nofail","0","2"]
-            packages:
-              - python3
-              - python3-pip
-            package_update: true
+            package_update: false
             ssh_authorized_keys:
-              - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCb3FJJiEgJRADLs8D7jsdZorcMX4+VUBZzXGDg+I5WdICDaX3uz8/hDQxoasI2bTwjcFFOhjNA4cWe57ZhiZbtAiVKvbQ6d35geSt9JqOoGliNVm4nYDBpfsQpgwJ67Qx6xwPsD0q0oZyJWfLwCJgjwHw0ZXQI0PxkLkW9itA46aLj3YKtYVv7OpzbwCXYD5tOV0ZKuhssFpwlrghCuLw9G7UcIMufZm6ZtJ+YQ0HuRpeWIPIq6uf0gQTDH19ARqEWtF/Xz3BJvDq6xC7eoiwQbbhOiuGMmPpGb6jltHdfdDPJOg2Q4I1NnqS9c2ay+0fO5Qm+MpmNRLjZehV1ofUhvcl8O7jpFKqdJXTurgaeBxsGug1NlBUYxMweU4S8WwHVhhJ3q+oMHV45QirEY7MQkA38nS8bB87FNydmTnocG14Kj+GPxD7E4L5rDWEvz/LuxE4mPrxYe2JIU1nqsv0wTvmTIWHU5xxxSLUh43ooTraQIciJGeHFyiqlRc9tfxs= dean.taylor@AC02GF0TSQ05N.sydney.edu.au
+              - ssh-rsa ADD_YOUR_TRUSTED_SSH_PUBLIC_KEYS_HERE
             ssh_pwauth: false
             timezone: Australia/Sydney
-            write_files:
-              - path: /etc/systemd/system/scratch.mount.d/override.conf
-                content: |
-                  [Unit]
-                  Wants=mount-scratch-chmod.service
-              - path: /etc/systemd/system/mount-scratch-chmod.service
-                content: |
-                  [Unit]
-                  Description=mount chmod
-                  RequiresMountsFor=/scratch
-                  [Service]
-                  Type=oneshot
-                  ExecStart=/usr/bin/chmod 01777 /scratch
 
   InstanceSecurityGroup:
     Type: "AWS::EC2::SecurityGroup"

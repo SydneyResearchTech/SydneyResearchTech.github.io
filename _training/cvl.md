@@ -101,6 +101,8 @@ to Ronin is complete.
 
 Once you have the External DNS and user credentials of your allocated virtual machine (VM).
 
+Connect to the VM via SSH and tunnel specific ports. These ports will be used during the training session.
+
 ```bash
 # Connect to the VM via SSH and tunnel specific ports
 # Port 3389 is the Windows Remote Desktop (RDP) port
@@ -110,6 +112,12 @@ ssh \
   -Llocalhost:8080:localhost:8080 \
   -Llocalhost:8888:localhost:8888 \
   ubuntu@ec2-13-238-182-54.ap-southeast-2.compute.amazonaws.com
+```
+
+Once connected via SSH to your VM instance you should ensure that the setup process has completed before continuing.
+
+```bash
+cloud-init status --wait
 ```
 
 ![RDP connection](/assets/img/RDP connect 2 CVL desktop.png){:class="img-responsive"}

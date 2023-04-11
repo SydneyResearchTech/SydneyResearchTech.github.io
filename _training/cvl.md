@@ -147,6 +147,10 @@ Once connected via SSH to your VM instance you should ensure that the setup proc
 
 ```bash
 cloud-init status --wait
+
+# Once you have your public key in place and tested that you can log in
+# Disable password login via SSH
+sudo sshd-harden
 ```
 
 ## Remote Desktop Connection (RDP)
@@ -155,3 +159,4 @@ cloud-init status --wait
 
 ![RDP connection](/assets/img/RDP connect 2 CVL desktop.png){:class="img-responsive"}
 
+Log into the CVL Desktop VM with the user name `ubuntu` and the password you set in the previous step.

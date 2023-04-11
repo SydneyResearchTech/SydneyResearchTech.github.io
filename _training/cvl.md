@@ -90,7 +90,11 @@ You will receive a message to `Install DCV`. Select `Install it!`. Please be pat
 
 Requirements:
 * an SSH client
+  * *Windows PC:* An SSH client is natively supported on Windows 10 and above.
 * Windows remote desktop (RDP) client
+  * *Windows PC:* An RDP client is natively supported, see instructions bellow
+  * *Mac:* Install the Windows native client via the App Store
+  * *Linux:* [Remmina](https://www.remmina.org){:target="_blank"} is a good RDP client for Linux, however any RDP client should work for this training session
 
 Your instructor will provide you with:
 * the fully qualified domain name (FQDN) or internet protocol (IP) of your CVL desktop virtual machine (VM)

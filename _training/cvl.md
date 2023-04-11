@@ -104,14 +104,39 @@ Once you have the External DNS and user credentials of your allocated virtual ma
 Connect to the VM via SSH and tunnel specific ports. These ports will be used during the training session.
 
 ```bash
+# Change this value to your remote machine name or IP
+VM_FQDN=ec2-13-238-182-54.ap-southeast-2.compute.amazonaws.com
+
 # Connect to the VM via SSH and tunnel specific ports
 # Port 3389 is the Windows Remote Desktop (RDP) port
-# Replace the FQDN with the one provided
 ssh \
-  -Llocalhost:3389:localhost:3389 \
+  -Llocalhost:63389:localhost:3389 \
   -Llocalhost:8080:localhost:8080 \
   -Llocalhost:8888:localhost:8888 \
-  ubuntu@ec2-13-238-182-54.ap-southeast-2.compute.amazonaws.com
+  ubuntu@${VM_FQDN}
+
+# Enter the password provided by your instructor
+# NB: You will be required to set your own password
+```
+
+*On your remote VM*
+
+```bash
+(umask 0077; mkdir -p ${HOME}/.ssh)
+```
+
+Secure your SSH connection
+
+*On you local PC*
+
+```bash
+# If you do not already have an SSH key pair
+# Use the command bellow selecting defaults
+# Enter a passphrase for your SSH private key
+ssh-keygen -t ed25519
+
+# Copy your public SSH key to the remote host
+scp ${HOME}/.ssh/id_ed25519.pub ${VM_FQDN}:.ssh/
 ```
 
 Once connected via SSH to your VM instance you should ensure that the setup process has completed before continuing.
@@ -119,6 +144,10 @@ Once connected via SSH to your VM instance you should ensure that the setup proc
 ```bash
 cloud-init status --wait
 ```
+
+## Remote Desktop Connection (RDP)
+
+*On your local Windows PC:* In the search box on the taskbar, type `Remote Desktop Connection`, and then select Remote Desktop Connection. In Remote Desktop Connection, type `localhost:63389`, and then select `Connect`.
 
 ![RDP connection](/assets/img/RDP connect 2 CVL desktop.png){:class="img-responsive"}
 

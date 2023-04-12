@@ -148,12 +148,17 @@ Once connected via SSH to your VM instance you should ensure that the setup proc
 ```bash
 cloud-init status --wait
 
-# Once you have your public key in place and tested that you can log in
+# Once you have your public key in place and tested that you can log in without a password
 # Disable password login via SSH
 sudo sshd-harden
+
+# Start a terminal multiplexer (tmux) to protect from accidental disconnections
+tmux
 ```
 
 ## Remote Desktop Connection (RDP)
+
+*NB:* The SSH connection must be active to provide the VPN tunnel for this section. RDP sessions are not recommended over the Internet.
 
 *On your local Windows PC:* In the search box on the taskbar, type `Remote Desktop Connection`, and then select Remote Desktop Connection. In Remote Desktop Connection, type `localhost:63389`, and then select `Connect`.
 

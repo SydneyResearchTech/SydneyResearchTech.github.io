@@ -25,7 +25,7 @@ At regular intervals each certificate is assessed to ensure it's continued valid
 
 ### Ingress and Load Balancer controller
 
-Ingress controllers reside at layer 7 of the OSI model and are instrumental in the reliability, performance and security of web based access to services. It is industry best practice to ensure that services are not directly accessed via the Internet and that an ingress controller (also known as reverse load balancers and web accelerators) are positioned as an edge device.
+Ingress controllers reside at layer 7 of the OSI model and are instrumental in the reliability, performance and security of web based access to services. It is industry best practice to ensure that services are not directly accessed via the Internet and that an ingress controller (also known as reverse proxy or web accelerator) are positioned as an edge device.
 
 Load balancers reside at layer 4 of the OSI model and provide resilience and performance of low level service endpoints. Some examples would be file transfer services, instrumentation communications, virtual private network (VPN) endpoints, etc.
 
@@ -38,12 +38,12 @@ Ingress and load balancer controllers are deployment specific services as this f
 | Azure AKS | Azure LB |
 | Google GKE |
 | Private cloud | See bellow |
-| Standalone | None | [MetalLB](https://metallb.universe.tf/installation/) |
+| Standalone | None | [MetalLB](https://metallb.universe.tf/) |
 
-*Private cloud* is segregated out as this highly dependent on the infrastructure teams selection of hardware or service provider.
+*Private cloud* is segregated out as this is highly dependent on the infrastructure teams selection of hardware or service provider.
 Many load balancer hardware vendors now provide Kubernetes compliant controller functionality as part of their service offerings.
 This would need to be assessed as part of the purchasing process and configured as per the vendor instructions.
-Some examples follow with no perceived preference or recommendation:
+Some examples follow with no perceived preference or recommendation to demonstrate this point:
 * [F5 BIG-IP Controller for Kubernetes](https://clouddocs.f5.com/products/connectors/k8s-bigip-ctlr/v1.8/)
 * [Kemp Ingress Controller for Kubernetes](https://kemptechnologies.com/techpreviews/kubernetes)
 * [NetScaler; Citrix ADC ingress controller for Kubernetes](https://docs.netscaler.com/en-us/citrix-k8s-ingress-controller.html)

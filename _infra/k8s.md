@@ -54,3 +54,13 @@ Some examples follow with no perceived preference or recommendation to demonstra
 ### Persistent volume (CSI)
 ### Autoscaler
 ### Logging and metrics
+
+In production Kubernetes system, a centralised cluster-wide logging solution is required to allow administrators to examine historical logs and analyze trends. Without such a system, the application logs can be lost while pods are replaced during failure or evicted from its node when a scaling down event is triggered. Since Kubernetes doesn't provide any kind of centralised logging, addtional components are often required. These components often consist of log gathering agent, centralised index management system and a web tool for visualing the data. 
+
+We use FluentD agents, which are deployed as pods on all nodes inside the cluster, gather logs from all application containers, tagging with pod-specific information, assgining them with pre-defined index name before sending them to OpenSearch engine.
+
+OpenSearch is community-driven open sourced project that includes OpenSearch (derived from ElasticSearch 7.10.2) and OpenSearch Dashboard (derived from Kibana 7.10.2). We utilise Amazon OpenSearch Service which is an AWS-managed service that lets you run and scale OpenSearch clusters.
+
+* https://opensearch.org/
+* https://aws.amazon.com/what-is/opensearch/
+

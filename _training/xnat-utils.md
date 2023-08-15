@@ -15,7 +15,7 @@ institutional AIS address here (e.g. https://xnat.sydney.edu.au)
 
 ```
 ubuntu@ip-10-0-5-248:~ $ xnat-ls
-XNAT server hostname (e.g. mbi-xnat.erc.monash.edu.au): http://localhost:8080
+XNAT server hostname (e.g. xnat.sydney.edu.au): http://localhost:8080
 XNAT username for 'http://localhost:8080': admin
 Password:
 ```
@@ -32,6 +32,8 @@ password lTG1UcRsQDCffoSjc7slfnYDTBAiIhV5LQmaKxIrKxFqTYk33ZHB4gKNjSmsdvdl
 This token will be valid 2 days and provides full access to your XNAT account, so make sure
 to keep it secure when using your institutional account. After the 2 days has lapsed
 you will be prompted to enter your credentials again.
+
+
 
 ## Launching Jupyter notebook
 

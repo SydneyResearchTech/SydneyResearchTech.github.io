@@ -42,12 +42,16 @@ plugins:
 timezone: Australia/Sydney
 
 collections:
+  general: {output: true}
   infra: {output: true}
   project: {output: true}
   training: {output: true}
   virtlab: {output: true}
+  workshop: {output: true}
 
 defaults:
+  - scope: {path: "", type: "general"}
+    values: {layout: "page"}
   - scope: {path: "", type: "infra"}
     values: {layout: "page"}
   - scope: {path: "", type: "project"}
@@ -55,4 +59,6 @@ defaults:
   - scope: {path: "", type: "training"}
     values: {layout: "page"}
   - scope: {path: "", type: "virtlab"}
+    values: {layout: "page"}
+  - scope: {path: "", type: "workshop"}
     values: {layout: "page"}

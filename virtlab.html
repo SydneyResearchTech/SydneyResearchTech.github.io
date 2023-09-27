@@ -6,6 +6,8 @@ permalink: virtlab/
 
 <ul>
 {%- for page in site.virtlab -%}
+{%- if page.draft == false -%}
 <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+{%- endif -%}
 {%- endfor -%}
 </ul>

@@ -280,6 +280,7 @@ helm search repo ais/
 helm show values ais/xnat |less
 
 HOST=$(hostname --fqdn)
+XNATDCMNodePort=30002
 
 cat <<EOT >xnat-values.yaml
 global:
@@ -301,6 +302,11 @@ xnat-web:
       cpu: 4000m
       memory: 8000Mi
   nonheapmem: 4000Mi
+  dicom_scp:
+    recievers:
+      - ae_title: "XNAT"
+        port: 8104
+        nodePort: $XNATDCMNodePort
   ingress:
     enabled: true
     annotations:

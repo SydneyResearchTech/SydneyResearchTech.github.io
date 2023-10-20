@@ -24,6 +24,16 @@ draft: false
       * CRI - Container Runtime Interface
       * e.g., containerd
 
+## Minimum host machine specs
+
+* Recommendation: use the VM provided by the instructor. This will help to ensure the machine has been tested to work with the content.
+
+|      | min. spec |
+| ---  | ---       |
+| RAM  | 8 Gi      |
+| vCPU | 2         |
+| HDD  | 100 GB    |
+
 ## Design highlights
 
 ## Getting started
@@ -34,7 +44,7 @@ Your instructor will provide the following
   * Initial password to the default `ubuntu` user account
 
 ```bash
-ssh -Llocalhost:63389:localhost:3389 ubuntu@ec2-13-54-86-198.ap-southeast-2.compute.amazonaws.com
+ssh -Llocalhost:63389:localhost:3389 ubuntu@MACHINE_NAME.ap-southeast-2.compute.amazonaws.com
 
 tmux
 ```
@@ -59,6 +69,7 @@ curl -L https://github.com/projectcalico/calico/releases/download/v3.25.0/calico
 chmod +x $HOME/.local/bin/calicoctl
 
 # Log out and back in
+# This will load all the environment changes into your new active shell.
 
 # Setup kubectl with microk8s cluster configuration
 (umask 0077; microk8s config > $HOME/.kube/config)

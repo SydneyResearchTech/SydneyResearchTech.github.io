@@ -7,8 +7,6 @@ draft: false
 
 To add new pages to an existing collection, add a MarkDown document into the appropriate collection directory. Ensure that the following basic front matter is applied.
 
-When page is ready to be published alter the draft tag to `true`.
-
 ```MarkDown
 ---
 title: ADD APPROPRIATE PAGE TITLE
@@ -21,7 +19,11 @@ ADD MARKDOWN CONTENT
 
 ```
 
-## Run Jekyll server locally for complex contributions
+NB: Collection dump directories start with an underscore e.g., `_training`.
+
+When page is ready to be published alter the draft tag to `false`.
+
+## Run Jekyll server locally for more complex contributions
 
 ```bash
 # Install asdf using brew on OS X

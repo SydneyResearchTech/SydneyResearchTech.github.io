@@ -34,6 +34,17 @@ draft: false
 | vCPU | 2         |
 | HDD  | 100 GB    |
 
+## Notes for instructors
+
+* Print out the details bellow and distribute to attendees to speed up setup
+  * Machine DNS or IP address for connection
+  * Password set up for workshop
+  * Quick Start guide outlining how to connect and access the GUI. Both Windows and Mac clients should be included as a minimum.
+* Verify cloud resource is available to support ec2 instance numbers
+  * `aws service-quotas get-service-quota --service-code ec2 --quota-code L-3819A6DF`
+  * NB: Measured in vCPUs - g4dn.xlarge - 4x vCPU ea - 4x 24 participants = 96 vCPUs
+* Verify access to VM using password from the workshop location to ensure unhindered access
+
 ## Design highlights
 
 ## Getting started

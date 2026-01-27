@@ -23,11 +23,11 @@ At regular intervals each certificate is assessed to ensure it's continued valid
 
 [ExternalDNS](https://github.com/kubernetes-sigs/external-dns) is a  mechanism to manage DNS providers and control DNS records dynamically via Kubernetes resources. Please see the link at the start of this section to find supported providers.
 
-### Ingress and Load Balancer controller
+### Load Balancer, API Gateway (deprecated Ingress Controller)
 
 Ingress controllers reside at layer 7 of the OSI model and are instrumental in the reliability, performance and security of web based access to services. It is industry best practice to ensure that services are not directly accessed via the Internet and that an ingress controller (also known as reverse proxy or web accelerator) are positioned as an edge device.
 
-Load balancers reside at layer 4 of the OSI model and provide resilience and performance of low level service endpoints. Some examples would be file transfer services, instrumentation communications, virtual private network (VPN) endpoints, etc.
+Load balancers reside at layer 4 of the OSI model and provide resilience and performance of low level service endpoints. Some examples would be file transfer services, instrumentation communications, virtual private network (VPN) endpoints, etc. A load balancer would commonly be utilised to present the layer 7 Ingress point to the Internet or internal network segments.
 
 Ingress and load balancer controllers are deployment specific services as this feature commonly relies on hardware implemented within the wider infrastructure. We will talk about common configuration patterns and touch on a small number of specific deployments, however an extensive discussion is outside the scope of this document.
 
@@ -51,8 +51,16 @@ Some examples follow with no perceived preference or recommendation to demonstra
   * [Using Kubernetes on GKE and AWS with Cloudflare Load Balancer](https://developers.cloudflare.com/support/third-party-software/others/using-kubernetes-on-gke-and-aws-with-cloudflare-load-balancer/)
   * [Cloudflare + Kubernetes](https://www.cloudflare.com/en-au/integrations/kubernetes/)
 
-### Persistent volume (CSI)
+### Container Networking Interface (CNI)
+
+### Network micro-segmentation
+
+### Service Mesh
+
+### Persistent storage (CSI)
+
 ### Autoscaler
+
 ### Logging and metrics
 
 In production Kubernetes system, a centralised cluster-wide logging solution is required to allow administrators to examine historical logs and analyze trends. Without such a system, the application logs can be lost while pods are replaced during failure or evicted from its node when a scaling down event is triggered. Since Kubernetes doesn't provide any kind of centralised logging, addtional components are often required. These components often consist of log gathering agent, centralised index management system and a web tool for visualing the data. 

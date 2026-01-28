@@ -57,6 +57,12 @@ Some examples follow with no perceived preference or recommendation to demonstra
 
 ### Service Mesh
 
+A service mesh is an infrastructure level layer that manages service-to-service communication, security, and observability between applications.
+
+Istio service mesh is an open-source, feature rich, industry standard provider which meets stringent security compliance specifications. It features traffic management (routing, retries), security (mTLS authentication, authorization), and observability (metrics, logs, traces) without the need to alter application code. A central control plane is used allowing a flexible deployment model, potentially spanning multiple clusters. With the use of PKI, policies can span disparate cluster models allowing segregated support models where multiple control planes exist.
+
+Istio is one of the rare examples that the AIS project strongly suggests all deployments implement. With various [Istio deployment models](https://istio.io/latest/docs/ops/deployment/deployment-models/), AIS participating sites can provides the federation, cross cluster trust model. By selecting a common service mesh layer and implementing a supporting PKI infrastructure all participating sites have a uniform mechanism to manage a secure interconnection layer.
+
 ### Persistent storage (CSI)
 
 ### Autoscaler

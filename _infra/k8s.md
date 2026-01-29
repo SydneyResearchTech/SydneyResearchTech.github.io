@@ -63,9 +63,16 @@ Istio service mesh is an open-source, feature rich, industry standard provider w
 
 Istio is one of the rare examples that the AIS project strongly suggests all deployments implement. With various [Istio deployment models](https://istio.io/latest/docs/ops/deployment/deployment-models/), AIS participating sites can provides the federation, cross cluster trust model. By selecting a common service mesh layer and implementing a supporting PKI infrastructure all participating sites have a uniform mechanism to manage a secure interconnection layer.
 
-### Persistent storage (CSI)
+### [Persistent Volumes (CSI)](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
+
+[Storage Classes](https://kubernetes.io/docs/concepts/storage/storage-classes/#provisioner)
 
 ### Autoscaler
+
+[Karpenter](https://karpenter.sh)
+
+[Cluster autoscaler](https://github.com/kubernetes/autoscaler)
+[Cluster Autoscaler for OpenStack Magnum](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/magnum/README.md)
 
 ### Logging and metrics
 
@@ -78,3 +85,4 @@ OpenSearch is community-driven open sourced project that includes OpenSearch (de
 * https://opensearch.org/
 * https://aws.amazon.com/what-is/opensearch/
 
+### Policy compliance

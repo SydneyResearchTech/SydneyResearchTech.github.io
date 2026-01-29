@@ -31,14 +31,30 @@ Adding Kubernetes to the hybrid cloud tool chain allows research applications to
 
 ## Policy as Code
 
-Calico, network/security team
-Istio, security team, policy per application and cross infrastructure interaction
+| Product        | Team(s) | Description |
+| -------        | ------- | ----------- |
+| Calico, Cilium | Network, Security |
+| [Kyverno](https://kyverno.io) | Cloud, Security |
+| Istio          | Cloud, Network, Security | policy per application and cross infrastructure |
 
-# Cost
+# Cost observability and optimisation (FinOps)
+
+[OpenCost](https://opencost.io)
+
+Cluster Autoscaling
 
 # Infrastructure as Code (IaC)
 
+Cluster API (CAPI)
+GitOps with FluxCD
+Ansible
+CloudFormation (AWS)
+HOT (OpenStack)
+
 # Application life cycle management
+
+GitOps FluxCD
+Helm
 
 # Collaboration
 

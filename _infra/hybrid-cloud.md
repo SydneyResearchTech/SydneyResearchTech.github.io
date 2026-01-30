@@ -46,14 +46,19 @@ Cluster Autoscaling
 # Infrastructure as Code (IaC)
 
 Cluster API (CAPI)
+
 GitOps with FluxCD
+
 Ansible
+
 CloudFormation (AWS)
+
 HOT (OpenStack)
 
 # Application life cycle management
 
-GitOps FluxCD
+GitOps, FluxCD
+
 Helm
 
 # Collaboration
@@ -64,6 +69,7 @@ Helm
 | ---------------           | -------------------- |
 | Containers                | Native Kubernetes |
 | Serverless & Event driven | [Knative](https://knative.dev/docs/){:target="_blank"} |
+| Virtualisation            | [KubeVirt](https://kubevirt.io/){:target="blank"} |
 | WASM                      | [Krustlet](https://krustlet.dev){:target="_blank"} |
 
 # Glossary
